@@ -1,6 +1,15 @@
-# HC_CC_05
-HTML assignment 5: Resume website
+# shawaz.org
 
-https://shawazi.github.io/HC_CC_05/
+Personal portfolio and résumé for Shawaz Imam, served by GitHub Pages (custom domain in `CNAME`).
 
-To-Do: Add and format footer; figure out why footer isn't sticking to bottom of page; add link to resume; add videos of project overviews that can be clicked as links to the project pages directly; adjust layout to flow better; remove border outlines once finished with adjustments; figure out why technologies icons are not centering
+Plain HTML/CSS/JS with no build step:
+
+- `index.html` — portfolio
+- `resume.html` — printable résumé (source of `Images/Shawaz_Resume.pdf`)
+- `styles/main.css`, `scripts/main.js`
+
+Regenerate the PDF after editing `resume.html`:
+
+```sh
+chromium --headless=new --no-pdf-header-footer --print-to-pdf=Images/Shawaz_Resume.pdf resume.html
+```

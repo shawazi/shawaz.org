@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shawaz Imam — Résumé</title>
+    <meta name="description" content="Résumé of Shawaz Imam, software engineer." />
+    <link rel="icon" href="./Images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #16181d;
+        --muted: #4a5060;
+        --rule: #d9d6ce;
+        --accent: #0f7a5c;
+        --paper: #ffffff;
+        --page-bg: #f2f0ea;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --page-bg: #0c0e12;
+        }
+      }
+      :root[data-theme="dark"] {
+        --page-bg: #0c0e12;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: var(--ink);
+        font-size: 10pt;
+        line-height: 1.42;
+        -webkit-font-smoothing: antialiased;
+      }
+      .bar {
+        max-width: 8.5in;
+        margin: 16px auto 0;
+        padding: 0 16px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 13px;
+      }
+      .bar a {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        .bar a { color: #6ee0b5; }
+      }
+      .page {
+        max-width: 8.5in;
+        margin: 12px auto 32px;
+        padding: 0.55in 0.6in;
+        background: var(--paper);
+        box-shadow: 0 1px 2px #0000001a, 0 12px 32px -16px #00000040;
+        border-radius: 6px;
+      }
+      header { border-bottom: 2px solid var(--ink); padding-bottom: 10px; }
+      h1 { margin: 0; font-size: 22pt; letter-spacing: -0.02em; line-height: 1.1; }
+      .title { margin-top: 3px; font-size: 11pt; font-weight: 600; color: var(--accent); }
+      .contact { margin-top: 6px; color: var(--muted); font-size: 9pt; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+      .contact a { color: inherit; text-decoration: none; }
+      h2 {
+        margin: 14px 0 6px;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 3px;
+      }
+      p { margin: 0; }
+      .summary { color: var(--muted); }
+      .skills { display: grid; grid-template-columns: 1.15in 1fr; gap: 2px 10px; }
+      .skills dt { font-weight: 600; }
+      .skills dd { margin: 0; color: var(--muted); }
+      .job { margin-top: 9px; }
+      .job-head, li { break-inside: avoid; }
+      .job-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+      .job-head b { font-size: 10.5pt; }
+      .job-head span { color: var(--muted); font-size: 9pt; white-space: nowrap; }
+      .org { color: var(--muted); font-style: italic; }
+      ul { margin: 4px 0 0; padding-left: 15px; }
+      li { margin: 2px 0; }
+      li::marker { color: var(--accent); }
+      .stack { color: var(--muted); font-size: 8.8pt; margin-top: 2px; }
+      @media (max-width: 640px) {
+        .page { padding: 24px 18px; border-radius: 0; margin: 8px 0 24px; }
+        .skills { grid-template-columns: 1fr; }
+        .skills dd { margin-bottom: 6px; }
+        .job-head { flex-direction: column; gap: 0; }
+      }
+      @page { size: Letter; margin: 0.45in 0.5in; }
+      @media print {
+        body { background: #fff; }
+        .bar { display: none; }
+        .page { box-shadow: none; margin: 0; padding: 0; max-width: none; border-radius: 0; }
+        a { color: inherit; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <a href="./">← shawaz.org</a>
+      <a href="./Images/Shawaz_Resume.pdf">Download PDF</a>
+    </div>
+    <main class="page">
+      <header>
+        <h1>Shawaz Imam</h1>
+        <p class="title">Software Engineer — Backend · Platform · Applied AI</p>
+        <p class="contact">
+          <a href="mailto:shawaz.imam@gmail.com">shawaz.imam@gmail.com</a>
+          <a href="https://shawaz.org">shawaz.org</a>
+          <a href="https://github.com/shawazi">github.com/shawazi</a>
+          <a href="https://www.linkedin.com/in/shawazi/">linkedin.com/in/shawazi</a>
+          <span>Remote · US</span>
+        </p>
+      </header>
+
+      <h2>Summary</h2>
+      <p class="summary">
+        Full-stack engineer with a backend and systems focus. I'm the sole engineer on a production multi-tenant SaaS
+        (TypeScript, PostgreSQL, real-time AI voice) serving a property-management customer, and I build
+        performance-critical services in Rust. I own the whole stack: schema, APIs, UI, CI/CD, infrastructure, and
+        operations. I work test-first and rely on real-system verification, not mocks alone.
+      </p>
+
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt><dd>TypeScript, Rust, Python, SQL, JavaScript, Solidity, Bash, Nix</dd>
+        <dt>Backend</dt><dd>NestJS, Node.js, Fastify, Axum, Actix-web, tokio, Django/DRF, FastAPI; REST, WebSockets, webhooks</dd>
+        <dt>Frontend</dt><dd>React, Next.js, React Native/Expo, Tailwind, Redux; Playwright; i18n/RTL</dd>
+        <dt>Data</dt><dd>PostgreSQL (row-level security, migrations), Drizzle, SQLx, Prisma, Redis/BullMQ, SQLite, Qdrant</dd>
+        <dt>AI &amp; voice</dt><dd>LLM tool use and fallback chains, MCP servers, RAG, Pipecat, streaming STT/TTS, Ollama, agentic dev workflows</dd>
+        <dt>Infra</dt><dd>GCP, Terraform, Docker, GitHub Actions, NixOS, systemd, Cloudflare, Firebase, Linux</dd>
+      </dl>
+
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-head"><b>Software Engineer &amp; Facilities Manager</b><span>Dec 2024 – Present</span></div>
+        <p class="org">Property management company, Greater Boston</p>
+        <ul>
+          <li>Designed, built, and operate, as sole engineer, a <b>multi-tenant property-maintenance SaaS</b> with an AI front desk. It triages requests from phone, SMS, email, and web, opens work orders, dispatches vendors, and syncs to the customer's property-management system. TypeScript monorepo with 11 apps, 37 packages, 122 migrations, and about 1,900 commits.</li>
+          <li>Enforced tenant isolation in the database: <b>forced Postgres row-level security</b> across all org-scoped tables, a least-privilege runtime role, and transaction-scoped context that prevents cross-org leaks through pooled connections. Verified with cross-org attack tests.</li>
+          <li>Built a <b>real-time AI voice agent</b> (carrier media streams → streaming STT → LLM → TTS) with multi-vendor fallback, plus a synthetic-caller harness that places real calls in automated tests. The harness found stacked defects that had caused dropped calls.</li>
+          <li>Implemented <b>safety-critical triage</b> (life-safety and seasonal no-heat floors that config can't lower) and an emergency dispatch cascade that pages on-call staff when every vendor has been tried.</li>
+          <li>Integrated <b>Stripe subscriptions</b>: signed webhooks, protection against out-of-order events, and idempotency keys hashed from request parameters. A live sandbox contract suite (50 tests) caught three defects that mocked unit tests had passed.</li>
+          <li>Built CI/CD: an 8-job GitHub Actions pipeline (secret scan, smoke boot, visual and accessibility checks, end-to-end tests) and a one-command deploy with rollback behind a Playwright gate. Found and fixed a critical auth-bypass CVE in a dependency, a SQL-injection advisory, and a token-rotation race.</li>
+          <li>Built a <b>guarded LLM agent</b> (MCP server) for operational records. Writes follow propose → confirm → execute with single-use, payload-bound tokens, and the agent runs in a sandboxed service limited to one outbound host.</li>
+          <li>Manage facilities for 25 properties, including 24/7 emergency response and vendor coordination. That daily contact with operations drives the product's requirements.</li>
+        </ul>
+        <p class="stack">TypeScript · NestJS · Next.js · Expo · PostgreSQL · Drizzle · Redis/BullMQ · Python · Pipecat · Twilio/Telnyx · Stripe · Terraform · GCP · Cloudflare</p>
+      </div>
+
+      <div class="job">
+        <div class="job-head"><b>Independent Software Engineer</b><span>2024 – Present</span></div>
+        <p class="org">Rust systems, DeFi, and applied AI (personal projects)</p>
+        <ul>
+          <li><b>Multi-chain liquidation engine</b> (Rust, about 21K lines, 320+ tests): an event-driven pipeline that simulates each trade in a local EVM (revm) before any RPC call. Includes a 15-state opportunity lifecycle, circuit breakers, Multicall3 batching, and a Solidity flash-loan contract tested with Foundry and deployed on 5 EVM chains.</li>
+          <li><b>B2B marketplace backend</b> (Rust/Axum/SQLx, 5 crates, 150+ tests including Testcontainers): separate Postgres schemas and a backend that is the only writer keep supplier identity hidden from buyers. Append-only money and audit records, Stripe deposits, TOTP MFA.</li>
+          <li><b>Infrastructure</b>: a 6-host NixOS fleet managed from one flake, with VM tests and CI, local GPU inference, a RAG index over my codebases, and fully local voice assistants.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head"><b>Full Stack Developer</b><span>Nov 2022 – May 2024</span></div>
+        <p class="org">NioyaTech</p>
+        <ul>
+          <li>Built and maintained React applications on Django REST APIs, working with third-party services and custom APIs in a 4-developer Agile/Scrum team (Jira).</li>
+          <li>Shipped React platforms built for 100K+ daily visitors. Reworked state management (hooks, Context, Redux) to cut load times about 87% across 7 applications.</li>
+        </ul>
+      </div>
+
+      <h2>Education</h2>
+      <div class="job-head" style="margin-top: 4px"><span style="color: var(--ink); font-size: 10pt"><b>B.A., Interdisciplinary Studies (Applied Psychology)</b>, University of Massachusetts Amherst</span><span>2024</span></div>
+      <div class="job-head"><span style="color: var(--ink); font-size: 10pt"><b>Full Stack Developer Certification</b>, Clarusway</span><span>2023</span></div>
+    </main>
+    <script>
+      try {
+        var t = localStorage.getItem("shawaz-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+  </body>
+</html>
