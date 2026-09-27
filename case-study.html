@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Study: AI Maintenance Platform — Shawaz Imam</title>
+    <meta
+      name="description"
+      content="Case study: how I designed and operate a multi-tenant property-maintenance platform with an AI voice front desk. Tenant isolation, safety-critical triage, billing, and incidents."
+    />
+    <meta property="og:title" content="Case study: an AI front desk for building maintenance" />
+    <meta
+      property="og:description"
+      content="Multi-tenant Postgres, real-time voice AI, and Rust, running in production."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://shawaz.org/case-study.html" />
+    <meta property="og:image" content="https://shawaz.org/Images/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shawaz Imam, backend and platform engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shawaz Imam — Backend &amp; Platform Engineer" />
+    <meta name="twitter:image" content="https://shawaz.org/Images/og.png" />
+    <meta name="theme-color" content="#0c0e12" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <link rel="canonical" href="https://shawaz.org/case-study.html" />
+    <link rel="icon" href="./favicon.ico" sizes="32x32" />
+    <link rel="icon" href="./Images/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./Images/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script>
+      try {
+        var t = localStorage.getItem("shawaz-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Shawaz Imam",
+        "jobTitle": "Backend & Platform Engineer",
+        "email": "mailto:shawaz@shawaz.org",
+        "url": "https://shawaz.org",
+        "sameAs": ["https://github.com/shawazi", "https://www.linkedin.com/in/shawazi/"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="wrap">
+        <a class="brand" href="./" aria-label="Shawaz Imam, home">
+          <span class="monogram" aria-hidden="true">SI</span>
+          <span>Shawaz Imam</span>
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li class="hide-sm"><a href="./#work">Work</a></li>
+            <li class="hide-sm"><a href="./#experience">Experience</a></li>
+            <li><a href="./resume.html">Résumé</a></li>
+            <li>
+              <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="wrap">
+          <p class="eyebrow mono"><a href="./">← shawaz.org</a>&nbsp;·&nbsp;Case study</p>
+          <h1>An AI front desk for building maintenance. <span>Sole engineer, in production.</span></h1>
+          <p class="lede">
+            A multi-tenant platform that answers resident calls and messages, decides how urgent each problem is,
+            dispatches vendors, and keeps a property-management company's records in sync. This page covers the parts
+            that were hard: isolating tenants, getting emergencies right, billing, and what broke in production.
+            Names of the company, product, and vendors are left out on purpose.
+          </p>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="wrap">
+          <div class="article">
+            <h2 style="margin-top: 0">Context</h2>
+            <p>
+              I work for a property-management company, where I run facilities as well as build its software. The
+              platform grew from an existing codebase that I took over after licensing and security review, and reworked
+              the data layer, voice pipeline, billing, and delivery from there. I'm the only engineer, so every decision below
+              was mine, and so was the pager when one of them was wrong.
+            </p>
+
+            <h2>Architecture</h2>
+            <p>
+              A TypeScript monorepo (NestJS API, workers, and realtime services; Next.js dashboard; Expo mobile app) and a
+              Python voice service, sharing one PostgreSQL database and a Redis-backed job queue.
+            </p>
+          </div>
+
+          <figure class="diagram" style="margin: 24px 0 0" aria-label="Architecture diagram">
+            <svg viewBox="0 0 900 380" role="img" aria-labelledby="dg-title">
+              <title id="dg-title">Residents reach the platform by phone, SMS, email, or web. Calls go to a Python voice service, which hands off to the NestJS API along with every other channel. The API enqueues jobs on Redis for workers that dispatch, sync, and notify. All services read and write a PostgreSQL database under row-level security. External systems are telephony carriers, LLM providers, Stripe, and the customer's property-management system.</title>
+              <defs>
+                <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0 0L10 5L0 10z" /></marker>
+              </defs>
+              <!-- channels -->
+              <rect class="box" x="10" y="30" width="150" height="56" rx="10" /><text x="85" y="55" text-anchor="middle">Phone</text><text class="sub" x="85" y="73" text-anchor="middle">media streams</text>
+              <rect class="box" x="10" y="106" width="150" height="56" rx="10" /><text x="85" y="131" text-anchor="middle">SMS · Email</text><text class="sub" x="85" y="149" text-anchor="middle">signed webhooks</text>
+              <rect class="box" x="10" y="182" width="150" height="56" rx="10" /><text x="85" y="207" text-anchor="middle">Web · Mobile</text><text class="sub" x="85" y="225" text-anchor="middle">Next.js · Expo</text>
+              <!-- services -->
+              <rect class="box key" x="240" y="30" width="190" height="56" rx="10" /><text x="335" y="55" text-anchor="middle">Voice service</text><text class="sub" x="335" y="73" text-anchor="middle">Python · STT → LLM → TTS</text>
+              <rect class="box key" x="240" y="144" width="190" height="56" rx="10" /><text x="335" y="169" text-anchor="middle">API</text><text class="sub" x="335" y="187" text-anchor="middle">NestJS · auth · triage</text>
+              <rect class="box" x="505" y="144" width="165" height="56" rx="10" /><text x="590" y="169" text-anchor="middle">Job queue</text><text class="sub" x="590" y="187" text-anchor="middle">Redis · BullMQ</text>
+              <rect class="box" x="715" y="144" width="180" height="56" rx="10" /><text x="805" y="169" text-anchor="middle">Workers</text><text class="sub" x="805" y="187" text-anchor="middle">dispatch · sync · notify</text>
+              <!-- db -->
+              <rect class="box key" x="240" y="290" width="430" height="60" rx="10" /><text x="455" y="315" text-anchor="middle">PostgreSQL</text><text class="sub" x="455" y="334" text-anchor="middle">forced row-level security · unprivileged runtime role</text>
+              <!-- external -->
+              <rect class="box" x="715" y="30" width="180" height="56" rx="10" /><text x="805" y="55" text-anchor="middle">AI &amp; telephony</text><text class="sub" x="805" y="73" text-anchor="middle">LLMs · carriers</text>
+              <rect class="box" x="715" y="272" width="180" height="78" rx="10" /><text x="805" y="297" text-anchor="middle">Billing &amp; records</text><text class="sub" x="805" y="315" text-anchor="middle">Stripe</text><text class="sub" x="805" y="332" text-anchor="middle">property-mgmt API</text>
+              <!-- edges -->
+              <path class="edge" d="M160 58H236" marker-end="url(#ah)" />
+              <path class="edge" d="M160 134C200 134 200 172 236 172" marker-end="url(#ah)" />
+              <path class="edge" d="M160 210C200 210 200 172 236 172" marker-end="url(#ah)" />
+              <path class="edge" d="M335 86V140" marker-end="url(#ah)" />
+              <path class="edge" d="M430 172H506" marker-end="url(#ah)" />
+              <path class="edge" d="M670 172H711" marker-end="url(#ah)" />
+              <path class="edge" d="M430 58H711" marker-end="url(#ah)" />
+              <path class="edge" d="M335 200V286" marker-end="url(#ah)" />
+              <path class="edge" d="M760 200C760 250 700 260 674 300" marker-end="url(#ah)" />
+              <path class="edge" d="M840 200V268" marker-end="url(#ah)" />
+            </svg>
+          </figure>
+
+          <div class="article" style="margin-top: 24px">
+            <h2>1 · Tenant isolation lives in the database</h2>
+            <p>
+              Every organisation's data shares one database, so a single missing <code>WHERE org_id = …</code> in
+              application code could show one customer another customer's residents. I moved that guarantee into
+              Postgres: <strong>forced row-level security on every org-scoped table</strong> (78 tables in the schema),
+              with policies keyed on a per-request org context.
+            </p>
+            <p>Three traps came up on the way, and each one would have quietly switched isolation off:</p>
+            <ul>
+              <li><strong>Superusers bypass RLS.</strong> Policies pass every test if the app connects as the role that owns the tables. The app now runs as an unprivileged runtime role, and migrations run as a separate owner.</li>
+              <li><strong>Session settings leak through a pool.</strong> A plain <code>SET</code> of the org context stays on the connection and carries into the next request that borrows it. Context is set with <code>SET LOCAL</code> inside the request's transaction, so it ends with the transaction.</li>
+              <li><strong>Connections must start from a known state.</strong> The pool's default context is sent in each connection's startup parameters, so a connection never begins with whatever a previous session left behind.</li>
+            </ul>
+            <p>Cross-org attack tests, where org A tries to read and write org B's rows through every path, run in CI.</p>
+
+            <h2>2 · Getting emergencies right</h2>
+            <p>
+              Resident messages are triaged by an LLM, but an LLM's urgency score can't be the last word. A no-heat call
+              in January in New England is an emergency whatever the model says, and state rules set minimum heat
+              levels during the heating season.
+            </p>
+            <p>
+              The rule is <strong>a floor, not a suggestion</strong>: life-safety keywords and seasonal no-heat reports
+              lift the priority to a minimum that org configuration can't lower. I rejected two alternatives. Marking
+              these "high" and relying on the call script wasn't enforced anywhere. Adding a new "urgent" tier would
+              have left every downstream consumer to handle a level it didn't know about.
+            </p>
+            <p>
+              When a vendor can't be reached, a dispatch cascade tries the next one and finally pages on-call staff.
+              One principle shapes all of the messaging:
+            </p>
+            <p class="callout">Never let a message claim someone was reached when they weren't.</p>
+
+            <h2>3 · Billing that survives the real Stripe</h2>
+            <ul>
+              <li><strong>Out-of-order events.</strong> Stripe doesn't guarantee delivery order, so an older subscription event can arrive after a newer one. Each update carries the event timestamp in its <code>WHERE</code> clause and applies only if it's newer than the stored one.</li>
+              <li><strong>Idempotency keys come from the request.</strong> The key is a hash of the request parameters, not a random value per attempt, so a retry can't create a second charge.</li>
+              <li><strong>Contract tests against the sandbox.</strong> A live suite runs against Stripe's test mode. It caught <strong>three defects</strong> that the mocked unit tests passed, because a mock accepts parameters the real API rejects.</li>
+            </ul>
+
+            <h2>4 · Writing to a vendor API that says "OK" to everything</h2>
+            <p>
+              The customer's property-management system exposes an API that returns <code>200</code> even when it
+              silently drops fields it doesn't recognise. A misspelled field looks like success.
+            </p>
+            <ul>
+              <li>I probed it with a deliberately fake field. It came back 200, which proved a success status meant nothing on its own.</li>
+              <li>Every write is now read back and compared field by field, and retried until what the API echoes back matches what was sent.</li>
+              <li>Writes that change records the customer relies on go through a human approval step before they execute.</li>
+            </ul>
+
+            <h2>5 · Incidents and what they changed</h2>
+            <h3>Calls dropped at a fixed time</h3>
+            <p>
+              Live calls were being cut off at the same point every time. The cause was the telephony markup's pause
+              length: when the pause ran out, the carrier ended the call. I replaced the pause with a redirect loop that
+              holds the call open, and added a harness scenario that stays on the line past the old limit. That
+              harness places real calls, so the test fails the way a real resident would experience it.
+            </p>
+            <h3>398 green tests, and the app couldn't start</h3>
+            <p>
+              The test suite passed, but the API wouldn't boot. The build strips types without checking them, and the
+              tests mocked out the parts that failed at startup. I added a required <strong>smoke-boot job</strong> that
+              starts the real services and checks their health. On its first run it found two bugs.
+            </p>
+            <h3>A deploy step that always passed</h3>
+            <p>
+              One CI deploy step turned out to be a placeholder that reported success without doing anything. It now
+              performs the deploy and fails if the deploy fails.
+            </p>
+            <h3>One space in a config file took services down</h3>
+            <p>
+              An unquoted environment value containing a space broke service startup. Deploys now run a precondition
+              check that parses the environment the same way the services do, and stop before anything restarts.
+            </p>
+
+            <h2>What I'd change</h2>
+            <ul>
+              <li>CI builds container images that nothing deploys. They cost minutes on every run and should go.</li>
+              <li>Some of these checks came after an incident rather than before it. The smoke-boot job and the env precondition check should have existed on day one.</li>
+            </ul>
+
+            <h2>Stack</h2>
+            <p>
+              TypeScript, NestJS, Next.js, Expo, PostgreSQL (Drizzle, 122 migrations), Redis/BullMQ, Python and Pipecat for
+              voice, Twilio and Telnyx, Stripe, Terraform on GCP, GitHub Actions, and Playwright. The UI ships in 9
+              languages, including right-to-left.
+            </p>
+            <p>
+              <a class="card-link" href="mailto:shawaz@shawaz.org">Happy to go deeper in an interview: shawaz@shawaz.org →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>© <span id="year">2026</span> Shawaz Imam</span>
+        <span class="mono"><a href="./">shawaz.org</a></span>
+      </div>
+    </footer>
+
+    <script src="./scripts/main.js" defer></script>
+  </body>
+</html>

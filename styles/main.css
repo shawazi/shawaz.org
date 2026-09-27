@@ -6,7 +6,7 @@
   --bg-sunken: #f2f0ea;
   --text: #16181d;
   --text-muted: #5b6070;
-  --text-faint: #8a8f9c;
+  --text-faint: #676c7b;
   --border: #e3e0d8;
   --accent: #0f7a5c;
   --accent-soft: #0f7a5c14;
@@ -33,7 +33,7 @@
     --bg-sunken: #0f1216;
     --text: #e8e9ec;
     --text-muted: #a2a7b3;
-    --text-faint: #6e7482;
+    --text-faint: #8e94a3;
     --border: #232833;
     --accent: #3ecf9b;
     --accent-soft: #3ecf9b17;
@@ -50,7 +50,7 @@
   --bg-sunken: #0f1216;
   --text: #e8e9ec;
   --text-muted: #a2a7b3;
-  --text-faint: #6e7482;
+  --text-faint: #8e94a3;
   --border: #232833;
   --accent: #3ecf9b;
   --accent-soft: #3ecf9b17;
@@ -787,32 +787,12 @@ footer .wrap {
 
 /* ---------- Motion ---------- */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-
-.reveal.in {
-  opacity: 1;
-  transform: none;
-}
-
-.no-js .reveal {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .reveal,
   .btn {
-    opacity: 1;
     transform: none;
     transition: none;
   }
@@ -825,8 +805,109 @@ footer .wrap {
     display: none;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+}
+
+/* ---------- Case study ---------- */
+
+.card-link {
+  font-weight: 600;
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+.article {
+  max-width: 72ch;
+  display: grid;
+  gap: 18px;
+}
+
+.article h2 {
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  margin-top: 28px;
+}
+
+.article h3 {
+  font-size: 1.08rem;
+  margin-top: 8px;
+}
+
+.article p,
+.article li {
+  color: var(--text-muted);
+}
+
+.article strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.article ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 20px;
+}
+
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--bg-sunken);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.callout {
+  border-left: 3px solid var(--accent);
+  padding: 4px 0 4px 16px;
+  color: var(--text);
+}
+
+.diagram {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  padding: 16px;
+}
+
+.diagram svg {
+  display: block;
+  min-width: 640px;
+  width: 100%;
+  height: auto;
+}
+
+.diagram .box {
+  fill: var(--bg-sunken);
+  stroke: var(--border);
+}
+
+.diagram .box.key {
+  stroke: var(--accent);
+}
+
+.diagram text {
+  fill: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.diagram .sub {
+  fill: var(--text-muted);
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.diagram .edge {
+  stroke: var(--text-faint);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.diagram .arrow {
+  fill: var(--text-faint);
 }

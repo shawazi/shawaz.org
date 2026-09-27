@@ -1,26 +1,34 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shawaz Imam — Software Engineer</title>
+    <title>Shawaz Imam — Backend &amp; Platform Engineer</title>
     <meta
       name="description"
-      content="Shawaz Imam — software engineer building production backends, real-time AI voice systems, and Rust services. TypeScript, Rust, Python, PostgreSQL."
+      content="Shawaz Imam, backend and platform engineer. Multi-tenant PostgreSQL, real-time AI voice systems, and Rust services running in production."
     />
-    <meta property="og:title" content="Shawaz Imam — Software Engineer" />
+    <meta property="og:title" content="Shawaz Imam — Backend &amp; Platform Engineer" />
     <meta
       property="og:description"
-      content="Production backends, real-time AI voice systems, and Rust services."
+      content="Multi-tenant Postgres, real-time voice AI, and Rust, running in production."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://shawaz.org/" />
+    <meta property="og:image" content="https://shawaz.org/Images/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Shawaz Imam, backend and platform engineer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shawaz Imam — Backend &amp; Platform Engineer" />
+    <meta name="twitter:image" content="https://shawaz.org/Images/og.png" />
     <meta name="theme-color" content="#0c0e12" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
     <link rel="canonical" href="https://shawaz.org/" />
+    <link rel="icon" href="./favicon.ico" sizes="32x32" />
     <link rel="icon" href="./Images/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./Images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="./Images/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,7 +47,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Shawaz Imam",
-        "jobTitle": "Software Engineer",
+        "jobTitle": "Backend & Platform Engineer",
+        "email": "mailto:shawaz@shawaz.org",
         "url": "https://shawaz.org",
         "sameAs": ["https://github.com/shawazi", "https://www.linkedin.com/in/shawazi/"]
       }
@@ -58,7 +67,7 @@
           <ul class="nav-links">
             <li class="hide-sm"><a href="#work">Work</a></li>
             <li class="hide-sm"><a href="#experience">Experience</a></li>
-            <li class="hide-sm"><a href="#skills">Skills</a></li>
+            <li class="hide-sm"><a href="./case-study.html">Case study</a></li>
             <li><a href="./resume.html">Résumé</a></li>
             <li>
               <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle color theme">
@@ -76,17 +85,22 @@
     <main id="main">
       <section class="hero" id="top">
         <div class="wrap">
-          <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span>Open to software engineering roles · Remote (US)</p>
-          <h1>Software engineer. <span>I ship systems that run in production.</span></h1>
+          <p class="eyebrow mono"><span class="dot" aria-hidden="true"></span>Open to backend &amp; platform roles · Remote or hybrid (US)</p>
+          <h1>Backend &amp; platform engineer. <span>Multi-tenant Postgres, real-time voice AI, and Rust in production.</span></h1>
           <p class="lede">
-            I build <strong>multi-tenant backends</strong>, <strong>real-time AI voice pipelines</strong>, and
-            <strong>high-performance Rust services</strong>, and I own them end to end: schema, API, UI, CI/CD,
-            infrastructure, and the on-call pager. My current platform runs in production for a paying customer.
+            I'm the sole engineer on a <strong>multi-tenant property-maintenance platform</strong> that answers resident
+            calls with an AI voice agent, triages emergencies, dispatches vendors, and bills through Stripe. It runs in
+            production for a paying customer, and I own all of it: schema, APIs, UI, CI/CD, infrastructure, and the
+            on-call pager.
           </p>
           <div class="cta">
-            <a class="btn primary" href="./resume.html">
+            <a class="btn primary" href="./case-study.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+              Read the case study
+            </a>
+            <a class="btn" href="./resume.html">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M8 13h8M8 17h5" /></svg>
-              View résumé
+              Résumé
             </a>
             <a class="btn" href="mailto:shawaz@shawaz.org">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>
@@ -102,68 +116,25 @@
             </a>
           </div>
 
-          <div class="stats reveal" role="list">
-            <div class="stat" role="listitem"><b>3,000+</b><span>commits shipped in 2026 across production and personal systems</span></div>
-            <div class="stat" role="listitem"><b>1,000+</b><span>test files guarding the flagship platform, CI-gated deploys</span></div>
-            <div class="stat" role="listitem"><b>78</b><span>Postgres tables under forced row-level security</span></div>
-            <div class="stat" role="listitem"><b>5</b><span>EVM chains with a flash-loan contract deployed by my Rust engine</span></div>
+          <div class="stats" role="list">
+            <div class="stat" role="listitem"><b>78</b><span>Postgres tables, with forced row-level security on every org-scoped one</span></div>
+            <div class="stat" role="listitem"><b>1,045</b><span>test spec files, plus 35 end-to-end suites gating deploys</span></div>
+            <div class="stat" role="listitem"><b>3</b><span>billing defects caught by live Stripe contract tests after mocked tests passed</span></div>
+            <div class="stat" role="listitem"><b>9</b><span>languages in the product UI, including right-to-left</span></div>
           </div>
-        </div>
-      </section>
-
-      <section class="block" id="about">
-        <div class="wrap about">
-          <div class="reveal">
-            <div class="section-head">
-              <p class="mono">01 · About</p>
-              <h2>Operator-turned-engineer. Close to the problem.</h2>
-            </div>
-            <div class="prose">
-              <p>
-                I'm a full-stack engineer with a backend and systems bias. I taught myself to program in 2018 (Python, JavaScript, Flask, Git, and Linux, through Codecademy and
-                tutorials), then formalised it with a full-stack program in React and Django. Now I'm the sole engineer on a <strong>property-maintenance SaaS</strong> that answers resident calls with an
-                AI voice agent, triages emergencies, dispatches contractors, and bills through Stripe. I also run
-                facilities for a 25-property portfolio, so I've been the person those emergency calls actually reach.
-              </p>
-              <p>
-                Outside work I build in <strong>Rust</strong>: an on-chain liquidation engine that simulates each trade in
-                a local EVM before sending it, a B2B marketplace backend, and data tooling. I run my own machines as a
-                <strong>NixOS fleet</strong> with local GPU inference.
-              </p>
-              <p>
-                I develop with AI coding agents every day, under strict gates: a failing test before each fix, CI that
-                proves the app actually boots, and live contract tests against real third-party APIs. The speed comes from the
-                agents. The correctness comes from the gates.
-              </p>
-              <p>
-                Away from the keyboard, I've spent ten years as a <strong>self-taught mechanic</strong>: brakes,
-                suspension, drivetrain, and car electronics. Isolating a fault in a car and isolating one in production
-                call for the same habit. Reproduce it, test one hypothesis at a time, and verify the fix.
-              </p>
-            </div>
-          </div>
-          <ul class="facts reveal" aria-label="Quick facts">
-            <li><span>Focus</span><span>Backend · Platform · Applied AI</span></li>
-            <li><span>Primary languages</span><span>TypeScript · Rust · Python</span></li>
-            <li><span>Data</span><span>PostgreSQL · Redis · SQLite</span></li>
-            <li><span>Cloud</span><span>GCP · Cloudflare · Terraform</span></li>
-            <li><span>Based</span><span>US · Remote or hybrid</span></li>
-            <li><span>Coding since</span><span>2018 · self-taught</span></li>
-            <li><span>Education</span><span>B.A., UMass Amherst</span></li>
-          </ul>
         </div>
       </section>
 
       <section class="block" id="work">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="mono">02 · Selected work</p>
+          <div class="section-head">
+            <p class="mono">Selected work</p>
             <h2>Things I've built and operate</h2>
-            <p>Most of this lives in private repositories for client and security reasons. I'm glad to walk through architecture and code in an interview.</p>
+            <p>Most of this lives in private repositories for employer and security reasons. I'm glad to walk through the architecture and code in an interview.</p>
           </div>
 
           <div class="work">
-            <article class="card wide reveal">
+            <article class="card wide">
               <div class="card-top mono"><span>Flagship · in production</span><span>2026 – present</span></div>
               <h3>Multi-tenant property-maintenance platform with an AI front desk</h3>
               <p>
@@ -171,77 +142,64 @@
                 vendors, syncs to the customer's property-management system, and drafts replies for staff to approve.
               </p>
               <ul>
-                <li><strong>TypeScript monorepo</strong>: 11 apps and 37 packages (NestJS API, worker, and realtime services; Next.js dashboard; Expo mobile app), 122 migrations, about 1,900 commits.</li>
-                <li><strong>Tenant isolation in the database</strong>: forced Postgres row-level security on every org-scoped table, a least-privilege runtime role, and transaction-scoped context, so pooled connections can't leak data between orgs. Verified with cross-org attack tests.</li>
-                <li><strong>Real-time voice agent</strong>: carrier media streams → streaming speech-to-text → LLM → text-to-speech, with vendor fallback chains and a synthetic-caller harness that places real phone calls in CI instead of anyone dialling by hand.</li>
-                <li><strong>Safety-critical triage</strong>: life-safety and seasonal no-heat floors that org config can't lower, plus an emergency dispatch cascade that pages on-call staff when every vendor is exhausted.</li>
-                <li><strong>Stripe billing</strong>: signed webhooks, protection against out-of-order events, and idempotency keys hashed from request parameters. A live contract suite against the Stripe sandbox caught three defects that mocked unit tests had passed.</li>
-                <li><strong>Delivery</strong>: 8-stage GitHub Actions pipeline (secret scan, smoke boot, visual and accessibility checks, end-to-end tests) and a one-command deploy with rollback behind a Playwright gate. Terraform for GCP, Cloudflare Tunnel, and systemd services on NixOS.</li>
+                <li><strong>Tenant isolation in the database</strong>: forced Postgres row-level security on every org-scoped table, a least-privilege runtime role, and transaction-scoped context, so pooled connections can't leak data between orgs. Cross-org attack tests run in CI.</li>
+                <li><strong>Real-time voice agent</strong>: carrier media streams → streaming speech-to-text → LLM → text-to-speech, with cross-vendor fallback and a synthetic-caller harness that places real phone calls in tests.</li>
+                <li><strong>Safety-critical triage</strong>: life-safety and seasonal no-heat floors that org config can't lower, and an emergency dispatch cascade that pages on-call staff when every vendor has been tried.</li>
+                <li><strong>Stripe billing</strong>: signed webhooks, protection against out-of-order events, and idempotency keys hashed from request parameters, all checked by a live contract suite against the Stripe sandbox.</li>
+                <li><strong>Scope and delivery</strong>: NestJS API, worker, and realtime services; Next.js dashboard; Expo mobile app; 122 migrations. An 8-job GitHub Actions pipeline and a one-command deploy with rollback behind a Playwright gate. Terraform for GCP.</li>
               </ul>
+              <a class="card-link" href="./case-study.html">Read the case study: architecture, decisions, and incidents →</a>
               <ul class="tags" aria-label="Stack">
-                <li>TypeScript</li><li>NestJS</li><li>Next.js</li><li>React Native</li><li>PostgreSQL</li><li>Drizzle</li><li>Redis / BullMQ</li><li>Python</li><li>Pipecat</li><li>Twilio / Telnyx</li><li>Stripe</li><li>Terraform</li><li>GCP</li>
+                <li>TypeScript</li><li>NestJS</li><li>Next.js</li><li>Expo</li><li>PostgreSQL</li><li>Drizzle</li><li>Redis / BullMQ</li><li>Python</li><li>Pipecat</li><li>Twilio / Telnyx</li><li>Stripe</li><li>Terraform</li><li>GCP</li>
               </ul>
             </article>
 
-            <article class="card reveal">
-              <div class="card-top mono"><span>Rust · DeFi</span><span>2026</span></div>
-              <h3>Multi-chain liquidation engine</h3>
-              <p>An event-driven engine that finds under-collateralised lending positions and liquidates them with flash loans.</p>
+            <article class="card">
+              <div class="card-top mono"><span>Rust · Low latency</span><span>2026</span></div>
+              <h3>Event-driven liquidation engine</h3>
+              <p>Watches lending positions across EVM chains and liquidates under-collateralised ones with flash loans.</p>
               <ul>
-                <li>Pipeline stages: <strong>monitor → scorer → queue → executor → submitter</strong>, with a 15-state opportunity state machine.</li>
-                <li><strong>Local EVM simulation (revm)</strong> rejects bad trades before any RPC call, with shadow mode for validation.</li>
-                <li>RPC circuit breakers, Multicall3 batching, and p50/p95 metrics. Solidity flash-loan contract with Foundry tests.</li>
-                <li>About 21K lines of Rust with 320+ tests. A companion Actix and TypeScript dashboard streams live state over WebSocket.</li>
+                <li><strong>Simulate before submit</strong>: every candidate runs in a local EVM (revm) first, so bad trades are rejected before any RPC call.</li>
+                <li>Pipeline stages: monitor → scorer → queue → executor → submitter, with a 15-state lifecycle state machine.</li>
+                <li>RPC circuit breakers, Multicall3 batching, and p50/p95 metrics. 320+ tests, and a Solidity flash-loan contract tested with Foundry.</li>
               </ul>
-              <ul class="tags" aria-label="Stack"><li>Rust</li><li>tokio</li><li>alloy</li><li>revm</li><li>Solidity</li><li>Foundry</li><li>SQLite</li><li>Redis</li></ul>
+              <ul class="tags" aria-label="Stack"><li>Rust</li><li>tokio</li><li>alloy</li><li>revm</li><li>Solidity</li><li>SQLite</li><li>Redis</li></ul>
             </article>
 
-            <article class="card reveal">
+            <article class="card">
               <div class="card-top mono"><span>Rust · Marketplace</span><span>2026</span></div>
               <h3>B2B sourcing marketplace backend</h3>
               <p>A two-sided marketplace. Buyers must never see which supplier fills their order, and the database enforces that.</p>
               <ul>
                 <li>Separate Postgres schemas for buyers and suppliers, with <strong>the backend as the only writer</strong>. The buyer API can't reach supplier data.</li>
                 <li>Pricing can't exist without a recorded cost source, and money and audit tables are append-only.</li>
-                <li>Axum and SQLx across 5 crates, 150+ tests including Testcontainers integration tests, Stripe deposits, TOTP MFA, and AI extraction of specs from uploaded documents.</li>
+                <li>Axum and SQLx across 5 crates, with 150+ tests including Testcontainers integration tests. Stripe deposits and TOTP MFA.</li>
               </ul>
-              <ul class="tags" aria-label="Stack"><li>Rust</li><li>Axum</li><li>SQLx</li><li>PostgreSQL</li><li>Next.js</li><li>S3 / MinIO</li><li>Docker</li></ul>
+              <ul class="tags" aria-label="Stack"><li>Rust</li><li>Axum</li><li>SQLx</li><li>PostgreSQL</li><li>Next.js</li><li>Docker</li></ul>
             </article>
 
-            <article class="card reveal">
+            <article class="card">
               <div class="card-top mono"><span>LLM agents · Security</span><span>2026</span></div>
               <h3>Guarded AI agent over a business API</h3>
               <p>An MCP server that lets a chat-based LLM agent read and change operational records safely.</p>
               <ul>
-                <li>Writes follow <strong>propose → confirm → execute</strong>, and execution requires a single-use token bound to the exact payload. The code enforces this; the prompt doesn't have to.</li>
+                <li>Writes follow <strong>propose → confirm → execute</strong>, and execution needs a single-use token bound to the exact payload. The code enforces this, not the prompt.</li>
                 <li>Every read cites its source endpoint and timestamp, so the agent can't invent an answer.</li>
-                <li>Runs in a sandboxed systemd unit with outbound traffic limited to one host by an allowlist proxy and per-user firewall rules, plus health monitoring.</li>
+                <li>Runs as a sandboxed service whose outbound traffic is limited to a single host.</li>
               </ul>
-              <ul class="tags" aria-label="Stack"><li>Python</li><li>MCP</li><li>systemd</li><li>NixOS</li><li>LLM tool use</li></ul>
+              <ul class="tags" aria-label="Stack"><li>Python</li><li>MCP</li><li>systemd</li><li>LLM tool use</li></ul>
             </article>
 
-            <article class="card reveal">
+            <article class="card">
               <div class="card-top mono"><span>Rust · Data</span><span>2026</span></div>
               <h3>Spreadsheet sync and AI cost-review service</h3>
               <p>Replaced fragile spreadsheet scripts with a typed service that keeps operational ledgers in sync and flags unusual charges.</p>
               <ul>
                 <li>HMAC-signed webhooks into an Axum server, with a scheduled reconcile job as a safety net.</li>
-                <li>Two independent LLM reviewers (one cloud, one local GPU) with fallback chains. Resumable, idempotent runs that never overwrite notes people have added.</li>
-                <li>About 11K lines of Rust with 240+ tests. The sheet is abstracted behind a trait, so all logic is tested offline.</li>
+                <li>Two independent LLM reviewers, one cloud and one on a local GPU. Runs are resumable and idempotent, and never overwrite notes people have added.</li>
+                <li>240+ tests. The sheet sits behind a trait, so all the logic is tested offline.</li>
               </ul>
-              <ul class="tags" aria-label="Stack"><li>Rust</li><li>Axum</li><li>OAuth2</li><li>Google Sheets API</li><li>Ollama</li></ul>
-            </article>
-
-            <article class="card reveal">
-              <div class="card-top mono"><span>Infra · Local AI</span><span>2026</span></div>
-              <h3>Declarative infrastructure and self-hosted AI</h3>
-              <p>My own machines, managed like production.</p>
-              <ul>
-                <li>A <strong>6-host NixOS fleet</strong> from one flake: 42 modules, VM tests, and CI that checks formatting, scans for secrets, and evaluates the config.</li>
-                <li>Local GPU inference (CUDA and Ollama), a vector-search RAG index over my codebases, and fully local voice assistants built on Whisper, local LLMs, and Kokoro text-to-speech.</li>
-                <li>A text-to-speech benchmark harness that runs each engine in its own reproducible shell behind one shared interface.</li>
-              </ul>
-              <ul class="tags" aria-label="Stack"><li>Nix</li><li>Linux</li><li>CUDA</li><li>Ollama</li><li>Qdrant</li><li>Whisper</li></ul>
+              <ul class="tags" aria-label="Stack"><li>Rust</li><li>Axum</li><li>OAuth2</li><li>Sheets API</li><li>Ollama</li></ul>
             </article>
           </div>
         </div>
@@ -249,15 +207,15 @@
 
       <section class="block" id="principles">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="mono">03 · How I work</p>
+          <div class="section-head">
+            <p class="mono">How I work</p>
             <h2>Evidence over optimism</h2>
           </div>
-          <div class="principles reveal">
+          <div class="principles">
             <div class="principle">
               <p class="mono">Test that it runs</p>
               <h3>Green tests aren't the same as working software</h3>
-              <p>I once inherited a repo with 398 passing tests that couldn't boot. It now has a required smoke-boot job, and on its first run that job found two real bugs.</p>
+              <p>The platform once had 398 passing tests and couldn't boot. A required smoke-boot job now checks that it actually runs, and on its first run it found two real bugs.</p>
             </div>
             <div class="principle">
               <p class="mono">Verify against reality</p>
@@ -267,12 +225,12 @@
             <div class="principle">
               <p class="mono">Reproduce first</p>
               <h3>No fix without a failing test</h3>
-              <p>Every bug fix starts with a test that fails for the right reason, and the fix is done when that test passes. That includes real phone calls for the voice agent.</p>
+              <p>Every bug fix starts with a test that fails for the right reason. For the voice agent, that test is a real phone call placed by the harness.</p>
             </div>
             <div class="principle">
               <p class="mono">Secure by construction</p>
               <h3>Make the wrong thing impossible</h3>
-              <p>Row-level security, schema-level data isolation, single-use confirmation tokens, and constant-time signature checks. I put guarantees in code, not in docs.</p>
+              <p>Row-level security, schema-level data isolation, single-use confirmation tokens, and constant-time signature checks. The guarantees live in code, not in docs.</p>
             </div>
           </div>
         </div>
@@ -280,35 +238,24 @@
 
       <section class="block" id="experience">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="mono">04 · Experience</p>
+          <div class="section-head">
+            <p class="mono">Experience</p>
             <h2>Where I've worked</h2>
           </div>
           <ol class="timeline">
-            <li class="role reveal">
+            <li class="role">
               <p class="when mono">Dec 2024 – Present</p>
               <div>
                 <h3>Software Engineer &amp; Facilities Manager</h3>
                 <p class="org">Property management company · Greater Boston</p>
                 <ul>
-                  <li>Sole engineer on the maintenance and AI front-desk platform described above, from design through production operations.</li>
-                  <li>Integrated the company's property-management system, telephony, SMS, and payments. Documented undocumented vendor behavior through controlled sandbox experiments.</li>
-                  <li>Manage facilities for 25 properties, including 24/7 emergency response and vendor coordination. That daily contact with the domain drives the product's requirements.</li>
+                  <li>Sole engineer on the maintenance and AI front-desk platform above, from design through production operations.</li>
+                  <li>Integrated the company's property-management system, telephony, SMS, and payments. Mapped undocumented vendor behavior through controlled sandbox experiments.</li>
+                  <li>Manage facilities for 25 properties, including 24/7 emergency response, so I'm also an on-call user of the product I build.</li>
                 </ul>
               </div>
             </li>
-            <li class="role reveal">
-              <p class="when mono">2024 – Present</p>
-              <div>
-                <h3>Independent Software Engineer</h3>
-                <p class="org">Rust systems, DeFi, and applied AI</p>
-                <ul>
-                  <li>Built and operated a multi-chain liquidation engine, a marketplace backend, MCP agent tooling, and local-first voice assistants.</li>
-                  <li>Run a self-hosted NixOS fleet with GPU inference, RAG, and CI-validated configuration.</li>
-                </ul>
-              </div>
-            </li>
-            <li class="role reveal">
+            <li class="role">
               <p class="when mono">2016 – Present</p>
               <div>
                 <h3>Self-Taught Automotive Mechanic</h3>
@@ -327,41 +274,79 @@
 
       <section class="block" id="skills">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="mono">05 · Skills</p>
+          <div class="section-head">
+            <p class="mono">Skills</p>
             <h2>Toolbox</h2>
-            <p>Tools I've used in production or in substantial projects, not ones I've only tried once.</p>
+            <p>Tools I use in production and am happy to go deep on in an interview.</p>
           </div>
           <div class="skills">
-            <div class="skill-group reveal"><h3>Languages</h3><ul class="tags"><li>TypeScript</li><li>Rust</li><li>Python</li><li>SQL</li><li>JavaScript</li><li>Solidity</li><li>Bash</li><li>Nix</li></ul></div>
-            <div class="skill-group reveal"><h3>Backend</h3><ul class="tags"><li>NestJS</li><li>Node.js</li><li>Fastify</li><li>Axum</li><li>Actix-web</li><li>tokio</li><li>Django / DRF</li><li>FastAPI</li><li>REST</li><li>WebSockets</li><li>Webhooks</li></ul></div>
-            <div class="skill-group reveal"><h3>Frontend</h3><ul class="tags"><li>React</li><li>Next.js</li><li>React Native / Expo</li><li>Tailwind</li><li>Redux</li><li>Playwright</li><li>i18n / RTL</li></ul></div>
-            <div class="skill-group reveal"><h3>Data</h3><ul class="tags"><li>PostgreSQL</li><li>Row-level security</li><li>Drizzle</li><li>SQLx</li><li>Prisma</li><li>Redis / BullMQ</li><li>SQLite</li><li>Qdrant</li></ul></div>
-            <div class="skill-group reveal"><h3>AI &amp; voice</h3><ul class="tags"><li>LLM tool use</li><li>MCP servers</li><li>RAG</li><li>Pipecat</li><li>Streaming STT / TTS</li><li>Ollama</li><li>Anthropic / OpenAI APIs</li><li>Agentic dev workflows</li></ul></div>
-            <div class="skill-group reveal"><h3>Infra &amp; delivery</h3><ul class="tags"><li>GCP</li><li>Terraform</li><li>Docker</li><li>GitHub Actions</li><li>NixOS</li><li>systemd</li><li>Cloudflare</li><li>Firebase</li><li>Linux</li></ul></div>
+            <div class="skill-group"><h3>Languages</h3><ul class="tags"><li>TypeScript</li><li>Rust</li><li>Python</li><li>SQL</li><li>JavaScript</li><li>Bash</li></ul></div>
+            <div class="skill-group"><h3>Backend</h3><ul class="tags"><li>NestJS</li><li>Node.js</li><li>Axum</li><li>tokio</li><li>Actix-web</li><li>REST</li><li>WebSockets</li><li>Webhooks</li></ul></div>
+            <div class="skill-group"><h3>Frontend</h3><ul class="tags"><li>React</li><li>Next.js</li><li>Expo</li><li>Tailwind</li><li>Playwright</li><li>i18n / RTL</li></ul></div>
+            <div class="skill-group"><h3>Data</h3><ul class="tags"><li>PostgreSQL</li><li>Row-level security</li><li>Drizzle</li><li>SQLx</li><li>Redis / BullMQ</li><li>SQLite</li></ul></div>
+            <div class="skill-group"><h3>AI &amp; voice</h3><ul class="tags"><li>LLM tool use</li><li>MCP servers</li><li>RAG</li><li>Pipecat</li><li>Streaming STT / TTS</li><li>Ollama</li></ul></div>
+            <div class="skill-group"><h3>Infra &amp; delivery</h3><ul class="tags"><li>GCP</li><li>Terraform</li><li>Docker</li><li>GitHub Actions</li><li>Linux</li><li>Cloudflare</li></ul></div>
           </div>
+        </div>
+      </section>
+
+      <section class="block" id="about">
+        <div class="wrap about">
+          <div>
+            <div class="section-head">
+              <p class="mono">About</p>
+              <h2>Operator-turned-engineer</h2>
+            </div>
+            <div class="prose">
+              <p>
+                I taught myself to program in 2018 (Python, JavaScript, Flask, Git, and Linux) and still learn that way.
+                I formalised it with a full-stack program in React and Django, then went to work at a property-management
+                company. I now run facilities for its 25 properties and build the software that runs maintenance. I've
+                been the person the emergency calls actually reach, which is why the triage rules are strict.
+              </p>
+              <p>
+                I develop with AI coding agents every day, under strict gates: a failing test before each fix, CI that
+                proves the app actually boots, and live contract tests against real third-party APIs. The speed comes
+                from the agents. The correctness comes from the gates.
+              </p>
+              <p>
+                Away from the keyboard, I've spent ten years as a <strong>self-taught mechanic</strong>. Isolating a fault
+                in a car and isolating one in production take the same habit: reproduce it, test one hypothesis at a
+                time, and verify the fix.
+              </p>
+            </div>
+          </div>
+          <ul class="facts" aria-label="Quick facts">
+            <li><span>Focus</span><span>Backend · Platform · Applied AI</span></li>
+            <li><span>Primary languages</span><span>TypeScript · Rust · Python</span></li>
+            <li><span>Data</span><span>PostgreSQL · Redis</span></li>
+            <li><span>Cloud</span><span>GCP · Terraform</span></li>
+            <li><span>Based</span><span>US · Remote or hybrid</span></li>
+            <li><span>Coding since</span><span>2018 · self-taught</span></li>
+            <li><span>Education</span><span>B.A., UMass Amherst</span></li>
+          </ul>
         </div>
       </section>
 
       <section class="block" id="earlier">
         <div class="wrap">
-          <div class="section-head reveal">
-            <p class="mono">06 · Public projects</p>
+          <div class="section-head">
+            <p class="mono">Public code</p>
             <h2>Open on GitHub</h2>
           </div>
-          <ul class="earlier reveal">
+          <ul class="earlier">
             <li><a href="https://github.com/shawazi/connect-four" target="_blank" rel="noopener"><b>Connect Four, multiplayer</b><span>Real-time game with server-authoritative rules, invite codes, reconnection, and spectators.</span></a></li>
             <li><a href="https://movies.shawaz.org" target="_blank" rel="noopener"><b>Movie discovery app</b><span>React client for the TMDB API with auth and search.</span></a></li>
-            <li><a href="https://github.com/shawazi?tab=repositories" target="_blank" rel="noopener"><b>More on GitHub</b><span>Earlier React, Django REST, and Solana work.</span></a></li>
+            <li><a href="https://github.com/shawazi/shawaz.org" target="_blank" rel="noopener"><b>This site</b><span>Hand-written HTML and CSS, with no build step and no trackers.</span></a></li>
           </ul>
         </div>
       </section>
 
       <section class="block" id="contact">
-        <div class="wrap contact reveal">
-          <p class="mono" style="color: var(--accent-text)">07 · Contact</p>
+        <div class="wrap contact">
+          <p class="mono" style="color: var(--accent-text)">Contact</p>
           <h2>Let's build something that holds up in production.</h2>
-          <p>I'm looking for backend, platform, or full-stack roles, especially teams working on real-time systems, applied AI, or Rust. Email is the fastest way to reach me.</p>
+          <p>I'm looking for backend, platform, or full-stack roles, especially on teams building real-time systems, multi-tenant SaaS, applied AI, or Rust. Email is the fastest way to reach me.</p>
           <div class="cta" style="margin-top: 0">
             <a class="btn primary" href="mailto:shawaz@shawaz.org">shawaz@shawaz.org</a>
             <a class="btn" href="./Images/Shawaz_Resume.pdf" target="_blank" rel="noopener">Download PDF résumé</a>
