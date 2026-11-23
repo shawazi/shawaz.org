@@ -11,7 +11,7 @@
   "use strict";
 
   var ENDPOINT = "https://in.shawaz.org";
-  var WEBSITE = "SITE_ID"; // the insight service's id for this site (not a secret)
+  var WEBSITE = "5ae2a93e-181b-4f7b-bb6a-841fd092d9c8"; // the insight service's id for this site (not a secret)
   var optedOut =
     navigator.globalPrivacyControl === true ||
     navigator.doNotTrack === "1" ||
