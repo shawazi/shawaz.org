@@ -96,6 +96,10 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6M8 13h8M8 17h5" /></svg>
               Résumé
             </a>
+            <button class="btn call" type="button" data-open-call>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4M8 22h8" /></svg>
+              Talk to my AI assistant
+            </button>
             <a class="btn" href="mailto:shawaz@shawaz.org">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></svg>
               Email
@@ -306,10 +310,25 @@
     <footer>
       <div class="wrap">
         <span>© <span id="year">2026</span> Shawaz Imam</span>
-        <span class="mono">Hand-written HTML &amp; CSS · no trackers</span>
+        <span class="mono">Hand-written HTML &amp; CSS · first-party analytics, no third-party trackers · <a href="./privacy.html#site">Privacy</a></span>
       </div>
     </footer>
 
+    <dialog id="ai-call" class="call-dialog" aria-labelledby="ai-call-title">
+      <form method="dialog" class="call-close"><button class="icon-btn" aria-label="Close">&times;</button></form>
+      <h2 id="ai-call-title">Talk to my AI assistant</h2>
+      <p>An AI assistant answers questions about my experience, skills and availability, and can pass me a message. It isn't me, and it speaks only from what's on this site.</p>
+      <p class="call-notice">Calls are transcribed and kept for 13 months, and a message you leave is emailed to me. Your microphone is used only during the call. <a href="./privacy.html#site">Privacy</a></p>
+      <p class="call-status mono" data-call-status role="status" aria-live="polite"></p>
+      <div class="call-actions">
+        <button class="btn primary" type="button" data-call-start>Start call</button>
+        <button class="btn" type="button" data-call-mute aria-pressed="false" hidden>Mute</button>
+        <button class="btn end" type="button" data-call-end hidden>End call</button>
+      </div>
+      <audio autoplay></audio>
+    </dialog>
+
     <script src="./scripts/main.js" defer></script>
+    <script src="./scripts/insight.js" defer></script>
   </body>
 </html>
